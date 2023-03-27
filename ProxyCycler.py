@@ -24,7 +24,14 @@ def convert_list_to_linked_list(proxies):
 
 proxies_head = convert_list_to_linked_list(open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n"))
 test_url = "https://www.marketwatch.com/"
+
+
 proxy = proxies_head
-print(get_page(test_url, proxy)[0])
+res = get_page(test_url, proxy)
+while not res[0]:
+    proxy = proxy.next
+    res = get_page(test_url, proxy)
+
+
 
 #print(proxies)
