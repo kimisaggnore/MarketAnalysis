@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import pandas as pd
 class ListNode:
     def __init__(self, data):
         self.data = data
@@ -32,32 +32,64 @@ def fetch_price(soup):
     price = price.find_all("bg-quote", {"class": "value"})[0].get_text()
     return price
 
-# prox = proxies_head
-# while prox != None:
-#     print(prox.data)
-#     prox = prox.next
+def retrieve_all_prices():
+    prices_list = []
+    all_companies = pd.read_csv("Proxy_Cycling/S&P500-Symbols.csv")
+    all_companies = all_companies.loc[:,"Symbol"]
+    all_companies = all_companies.tolist()
+    all_companies.remove('ABMD')
+    all_companies.remove('CTXS')
+    all_companies.remove('DRE')
+    all_companies.remove('FBHS')
+    all_companies.remove('NLSN')
+    all_companies.remove('NLOK')
+    all_companies.remove('TWTR')
+    proxies_head = convert_list_to_linked_list(open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n"))
+    proxy = proxies_head
+    all_companies = all_companies[450:]
+    for company in all_companies:
+        if proxy != None:
+            url = f"https://www.marketwatch.com/investing/stock/{company}?mod=search_symbol"
+            res = get_page(url, proxy)
+            num_cycles = 1
+            while not res[0]:
+                proxy = proxy.next
+                if proxy == None:
+                    break
+                res = get_page(url, proxy)
+                num_cycles += 1
+            #print(num_cycles)
+            document_soup = BeautifulSoup(str(res), 'html.parser')
+            #print(fetch_price(document_soup))
+            prices_list.append(fetch_price(document_soup))
+            proxy = proxy.next
+        else:
+            proxy = proxies_head
+  
+        print(company)
+    return prices_list
 
-test_url = "https://www.marketwatch.com/investing/stock/enph?mod=search_symbol"
+
+retrieve_all_prices()
+# num_cycles = 1
+# proxies_head = convert_list_to_linked_list(open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n"))
+# proxy = proxies_head
+# test_url = "https://www.marketwatch.com/investing/stock/enph?mod=search_symbol"
+# res = get_page(test_url, proxy)
+# print(num_cycles)
+# while not res[0]:
+#     proxy = proxy.next
+#     if proxy == None:
+#         break
+#     res = get_page(test_url, proxy)
+#     num_cycles += 1
+#     print(num_cycles)
 
 
-num_cycles = 1
-proxies_head = convert_list_to_linked_list(open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n"))
-proxy = proxies_head
-res = get_page(test_url, proxy)
-#print(res[1])
-print(num_cycles)
-while not res[0]:
-    proxy = proxy.next
-    if proxy == None:
-        break
-    res = get_page(test_url, proxy)
-    num_cycles += 1
-    print(num_cycles)
+# document_soup = BeautifulSoup(str(res), 'html.parser')
 
+# print(fetch_price(document_soup))
 
-document_soup = BeautifulSoup(str(res), 'html.parser')
-
-print(fetch_price(document_soup))
 
 #[0].find_all("tr", {"class": "table__row"})
 
