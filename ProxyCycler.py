@@ -38,39 +38,88 @@ def fetch_price(soup):
     return price
 
 async def retrieve_price(session, url, proxy):
-    #print(proxy.data)
     try:
-        async with session.get(url, proxy = f"http://{proxy.data}", ssl = False, timeout = 6) as res:
+        async with session.get(url, proxy = f"http://{proxy.data}", ssl = False, timeout = 10) as res:
             if res.ok:
                 response = await res.text()
                 document_soup = BeautifulSoup(str(response), 'html.parser')
                 price = fetch_price(document_soup)
-                #print(price)
                 return price
             else:
                 return 0
     except:
-        #print(proxy.data)
         return 0
 
-
-
-
-async def retrieve_SP_500_prices():
+async def retrieve_SP_500_prices(companies):
     proxy = proxies_head
     async with aiohttp.ClientSession() as session:
         tasks = []
-        for company in all_companies:
-            url = f"https://www.marketwatch.com/investing/stock/{company}?mod=search_symbol"
-            tasks.append(asyncio.ensure_future(retrieve_price(session, url, proxy)))
-            if proxy.next != None:
-                proxy = proxy.next
-            else:
-                proxy = proxies_head
+        counter = 0
+        for index in companies:
+            if index == 1:
+                url = f"https://www.marketwatch.com/investing/stock/{all_companies[counter]}?mod=search_symbol"
+                tasks.append(asyncio.ensure_future(retrieve_price(session, url, proxy)))
+                if proxy.next != None:
+                    proxy = proxy.next
+                else:
+                    proxy = proxies_head
+            counter += 1
         
         global all_prices
         all_prices = await asyncio.gather(*tasks)
         
+async def check_proxy(session, proxy):
+    url = f"https://www.marketwatch.com/"
+    try:
+        async with session.get(url, proxy = f"http://{proxy}", ssl = False, timeout = 6) as res:
+            if res.ok:
+                response = await res.text()
+                return 1
+            else:
+                return 0
+    except:
+        return 0
+
+async def check_proxies():
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for proxy in proxy_list:
+            tasks.append(asyncio.ensure_future(check_proxy(session, proxy)))
+        
+        global working_proxies
+        working_proxies = await asyncio.gather(*tasks)
+
+def check_num_successful(list_of_prices):
+    list_of_remaining = []
+    length = len(list_of_prices)
+    total = 0
+    for price in list_of_prices:
+        if price != 0:
+            total += 1
+            list_of_remaining.append(0)
+        else:
+            list_of_remaining.append(1)
+    print("\n")
+    print(list_of_remaining)
+    print("\n")
+    return float(total)/float(length), list_of_remaining
+
+def merge_prices_lists(prev_prices, cur_prices, remaining_list):
+    indexer_one = 0
+    indexer_two = 0
+    len_list = len(prev_prices)
+    is_not_greater = True
+    while is_not_greater:
+        while indexer_one < len_list and prev_prices[indexer_one] != 0:
+            indexer_one += 1
+        while indexer_two < len_list and cur_prices[indexer_two] == 0:
+            indexer_two += 1
+        prev_prices[indexer_one] = cur_prices[indexer_two]
+        remaining_list[indexer_one] = 0
+        if indexer_one >= len_list or indexer_two >= len_list:
+            is_not_greater = False
+    return prev_prices, remaining_list
+    
 all_companies = pd.read_csv("Proxy_Cycling/S&P500-Symbols.csv")
 all_companies = all_companies.loc[:,"Symbol"]
 all_companies = all_companies.tolist()
@@ -88,36 +137,50 @@ proxy_list = open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n")
 
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
+start_time = time.time()
 new_proxy_list = []
-for _ in range(0,3):
-    start_time = time.time()
-    asyncio.run(retrieve_SP_500_prices())
-    print(all_prices)
-    index = 0
-    for price in all_prices:
-        if price != 0:
-            new_proxy_list.append(proxy_list[index])
-        index += 1
-    proxy_list = proxy_list[index:]
-    proxies_head = convert_list_to_linked_list(proxy_list)
-    print("--- %s seconds ---" % (time.time() - start_time))
+asyncio.run(check_proxies())
+index = 0
+for proxies in working_proxies:
+    if proxies != 0:
+        new_proxy_list.append(proxy_list[index])
+    index += 1
+print("--- %s seconds ---" % (time.time() - start_time))
 
 proxies_head = convert_list_to_linked_list(new_proxy_list)
 start_time = time.time()
-asyncio.run(retrieve_SP_500_prices())
+indexes = [1]*120
+asyncio.run(retrieve_SP_500_prices(indexes))
 print(all_prices)
 print("--- %s seconds ---" % (time.time() - start_time))
+
+current_prices = all_prices.copy()
+percent_success, remaining_list = check_num_successful(all_prices)
+#while not percent_success >= .9:
+
+asyncio.run(retrieve_SP_500_prices(remaining_list))
+#percent_success, remaining_list = check_num_successful(all_prices)
+print("--- %s seconds ---" % (time.time() - start_time))
+print(current_prices)
+print("\n")
+print(all_prices)
+
+
+    
+
+
+# while not num_success > .9:
+#     proxies_head = convert_list_to_linked_list(new_proxy_list)
+#     start_time = time.time()
+#     asyncio.run(retrieve_SP_500_prices())
+#     print(all_prices)
+#     print("--- %s seconds ---" % (time.time() - start_time))
 
 # start_time = time.time()
 # proxies_head = convert_list_to_linked_list(new_proxy_list)
 # asyncio.run(retrieve_SP_500_prices())
 # print(all_prices)
 # print("--- %s seconds ---" % (time.time() - start_time))
-
-
-
-
-
 
 # start_time = time.time()
 
