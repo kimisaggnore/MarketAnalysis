@@ -4,6 +4,7 @@ import pandas as pd
 import aiohttp
 import asyncio
 import time
+import urllib.request , socket
 
 class ListNode:
     def __init__(self, data):
@@ -38,33 +39,38 @@ def fetch_price(soup):
 
 async def retrieve_price(session, url, proxy):
     #print(proxy.data)
-    async with session.get(url, proxy = f"http://{proxy.data}", ssl = False) as res:
-        if res.ok:
-            response = await res.text()
-            document_soup = BeautifulSoup(str(response), 'html.parser')
-            price = fetch_price(document_soup)
-            #print(price)
-            return price
-        else:
-            return None
+    try:
+        async with session.get(url, proxy = f"http://{proxy.data}", ssl = False, timeout = 6) as res:
+            if res.ok:
+                response = await res.text()
+                document_soup = BeautifulSoup(str(response), 'html.parser')
+                price = fetch_price(document_soup)
+                #print(price)
+                return price
+            else:
+                return 0
+    except:
+        #print(proxy.data)
+        return 0
+
+
 
 
 async def retrieve_SP_500_prices():
     proxy = proxies_head
     async with aiohttp.ClientSession() as session:
-
         tasks = []
         for company in all_companies:
+            url = f"https://www.marketwatch.com/investing/stock/{company}?mod=search_symbol"
+            tasks.append(asyncio.ensure_future(retrieve_price(session, url, proxy)))
             if proxy.next != None:
                 proxy = proxy.next
             else:
                 proxy = proxies_head
-            url = f"https://www.marketwatch.com/investing/stock/{company}?mod=search_symbol"
-            tasks.append(asyncio.ensure_future(retrieve_price(session, url, proxy)))
         
+        global all_prices
         all_prices = await asyncio.gather(*tasks)
-        print(all_prices)
-
+        
 all_companies = pd.read_csv("Proxy_Cycling/S&P500-Symbols.csv")
 all_companies = all_companies.loc[:,"Symbol"]
 all_companies = all_companies.tolist()
@@ -76,10 +82,37 @@ all_companies.remove('NLSN')
 all_companies.remove('NLOK')
 all_companies.remove('TWTR')
 proxies_head = convert_list_to_linked_list(open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n"))
-start_time = time.time()
+proxy_list = open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n")
+# print(len(proxy_list))
+
+
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
+new_proxy_list = []
+for _ in range(0,3):
+    start_time = time.time()
+    asyncio.run(retrieve_SP_500_prices())
+    print(all_prices)
+    index = 0
+    for price in all_prices:
+        if price != 0:
+            new_proxy_list.append(proxy_list[index])
+        index += 1
+    proxy_list = proxy_list[index:]
+    proxies_head = convert_list_to_linked_list(proxy_list)
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+proxies_head = convert_list_to_linked_list(new_proxy_list)
+start_time = time.time()
 asyncio.run(retrieve_SP_500_prices())
+print(all_prices)
 print("--- %s seconds ---" % (time.time() - start_time))
+
+# start_time = time.time()
+# proxies_head = convert_list_to_linked_list(new_proxy_list)
+# asyncio.run(retrieve_SP_500_prices())
+# print(all_prices)
+# print("--- %s seconds ---" % (time.time() - start_time))
 
 
 
