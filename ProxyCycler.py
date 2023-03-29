@@ -38,8 +38,7 @@ def fetch_price(soup):
 
 async def retrieve_price(session, url, proxy):
     #print(proxy.data)
-    async with session.get(url, proxy = f"http://{proxy}", ssl = False) as res:
-        print("connected")
+    async with session.get(url, proxy = f"http://{proxy.data}", ssl = False) as res:
         if res.ok:
             response = await res.text()
             document_soup = BeautifulSoup(str(response), 'html.parser')
