@@ -97,9 +97,9 @@ def check_num_successful(list_of_prices):
             list_of_remaining.append(0)
         else:
             list_of_remaining.append(1)
-    print("\n")
-    print(list_of_remaining)
-    print("\n")
+    # print("\n")
+    # print(list_of_remaining)
+    # print("\n")
     return float(total)/float(length), list_of_remaining
 
 def merge_prices_lists(prev_prices, cur_prices, remaining_list):
@@ -112,7 +112,7 @@ def merge_prices_lists(prev_prices, cur_prices, remaining_list):
         while indexer_one < len_list1 and prev_prices[indexer_one] != 0:
             indexer_one += 1
         while indexer_two < len_list2 and cur_prices[indexer_two] == 0:
-            print("increment")
+            # print("increment")
             indexer_two += 1
         if indexer_one >= len_list1 or indexer_two >= len_list2:
             is_not_greater = False
