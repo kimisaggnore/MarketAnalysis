@@ -112,15 +112,13 @@ def merge_prices_lists(prev_prices, cur_prices, remaining_list):
         while indexer_one < len_list1 and prev_prices[indexer_one] != 0:
             indexer_one += 1
         while indexer_two < len_list2 and cur_prices[indexer_two] == 0:
-            # print("increment")
             indexer_two += 1
         if indexer_one >= len_list1 or indexer_two >= len_list2:
             is_not_greater = False
             break
         prev_prices[indexer_one] = cur_prices[indexer_two]
-        #remaining_list[indexer_one] = 0
         indexer_two += 1
-    return prev_prices #, remaining_list
+    return prev_prices 
 
 async def retrieve_price(session, url, proxy, return_prices, counter):
     try:
