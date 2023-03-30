@@ -42,9 +42,6 @@ async def main():
 
     print("\n")
     print(current_prices)
-    # print("--- total time: %s elapsed seconds ---" % (time.time() - start_time))
-    # print("\n")
-    # print(remaining_list)
 
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 asyncio.run(main())
