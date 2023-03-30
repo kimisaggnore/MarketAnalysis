@@ -122,13 +122,15 @@ def merge_prices_lists(prev_prices, cur_prices, remaining_list):
         indexer_two += 1
     return prev_prices #, remaining_list
 
-async def retrieve_price(session, url, proxy):
+async def retrieve_price(session, url, proxy, return_prices, counter):
     try:
         async with session.get(url, proxy = f"http://{proxy.data}", ssl = False, timeout = 10) as res:
             if res.ok:
                 response = await res.text()
                 document_soup = BeautifulSoup(str(response), 'html.parser')
                 price = fetch_price(document_soup)
+                return_prices[counter] = price
+                
                 return price
             else:
                 return 0
@@ -137,13 +139,14 @@ async def retrieve_price(session, url, proxy):
 
 async def retrieve_SP_500_prices(companies, proxies_head, all_companies):
     proxy = proxies_head
+    return_prices = ['0']*len(companies)
     async with aiohttp.ClientSession() as session:
         tasks = []
         counter = 0
         for index in companies:
             if index == 1:
                 url = f"https://www.marketwatch.com/investing/stock/{all_companies[counter]}?mod=search_symbol"
-                tasks.append(asyncio.ensure_future(retrieve_price(session, url, proxy)))
+                tasks.append(asyncio.ensure_future(retrieve_price(session, url, proxy, return_prices, counter)))
                 if proxy.next != None:
                     proxy = proxy.next
                 else:
@@ -151,15 +154,16 @@ async def retrieve_SP_500_prices(companies, proxies_head, all_companies):
             counter += 1
         
         all_prices = await asyncio.gather(*tasks)
-        return all_prices
+        return return_prices
 
 
-async def check_proxy(session, proxy):
+async def check_proxy(session, proxy, return_proxies, counter):
     url = f"https://www.marketwatch.com/"
     try:
-        async with session.get(url, proxy = f"http://{proxy}", ssl = False, timeout = 6) as res:
+        async with session.get(url, proxy = f"http://{proxy}", ssl = False, timeout = 5) as res:
             if res.ok:
                 response = await res.text()
+                return_proxies[counter] = 1
                 return 1
             else:
                 return 0
@@ -167,11 +171,14 @@ async def check_proxy(session, proxy):
         return 0
 
 async def check_proxies(proxy_list):
+    return_proxies = [0]*len(proxy_list)
     async with aiohttp.ClientSession() as session:
         tasks = []
+        counter = 0
         for proxy in proxy_list:
-            tasks.append(asyncio.ensure_future(check_proxy(session, proxy)))
+            tasks.append(asyncio.ensure_future(check_proxy(session, proxy, return_proxies, counter)))
+            counter += 1
         
         # global working_proxies
         working_proxies = await asyncio.gather(*tasks)
-        return working_proxies
+        return return_proxies
