@@ -8,6 +8,7 @@ import urllib.request , socket
 from BasicHelperFunctions import *
 import numpy as np
 import pandas as pd
+from datetime import datetime
 #from AsynchronousHelperFunctions import *
 
 async def main():
@@ -48,9 +49,15 @@ async def main():
     print(current_prices)
 
     current_prices = np.asarray(current_prices)
+    saved_full_times = []
+    saved_daily_times = []
     saved_data = []
     saved_data.append(current_prices)
+    saved_full_times.append(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+    saved_daily_times.append(float(datetime.now().strftime("%H"))*60 + float(datetime.now().strftime("%M")) + float(datetime.now().strftime("%S"))/60)
     np.savetxt('Proxy_Cycling/trading_data.csv', saved_data, fmt = "%f", delimiter= ",")
+    np.savetxt('Proxy_Cycling/trading_full_time_data.csv', saved_full_times, fmt = "%s", delimiter= ",")
+    np.savetxt('Proxy_Cycling/trading_daily_time_data.csv', saved_daily_times, fmt = "%f", delimiter= ",")
 
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 asyncio.run(main())
