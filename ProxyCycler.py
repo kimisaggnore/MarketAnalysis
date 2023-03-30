@@ -22,8 +22,13 @@ async def main():
     new_proxy_list = []
     working_proxies = await check_proxies(proxy_list)
     print("--- verifying proxies: %s seconds elapsed ---" % ((time.time() - start_time)))
-    
-    for i in range(0,10):
+    # saved_full_times = np.loadtxt('Proxy_Cycling/trading_full_time_data.csv', dtype = str)
+    # saved_daily_times = np.loadtxt('Proxy_Cycling/trading_daily_time_data.csv', dtype= float)
+    # saved_data = np.loadtxt('Proxy_Cycling/trading_data.csv', dtype= str)
+    saved_full_times = []
+    saved_daily_times = []
+    saved_data = []
+    for _ in range(0,10):
         index = 0
         for proxies in working_proxies:
             if proxies != 0:
@@ -39,26 +44,25 @@ async def main():
         percent_success, remaining_list = check_num_successful(all_prices)
         print("--- threshold percent: 0.95 ---")
         print("--- remaining prices retrieval: {:.2f} seconds elapsed, {:.2f} percent complete ---".format(time.time() - start_time , percent_success))
-        while not percent_success >= .95:
+        trials = 0
+        while not percent_success >= .95 and trials <= 5:
             all_prices = await retrieve_SP_500_prices(remaining_list, proxies_head, all_companies)
             all_prices = [float(i.replace(',','')) for i in all_prices]
             current_prices = merge_prices_lists(current_prices, all_prices, remaining_list)
             percent_success, remaining_list = check_num_successful(current_prices)
+            trials += 1
             print("--- remaining prices retrieval: {:.2f} seconds elapsed, {:.2f} percent complete ---".format(time.time() - start_time , percent_success))
 
         print("\n")
         print(current_prices)
 
-        current_prices = np.asarray(current_prices)
-        saved_full_times = []
-        saved_daily_times = []
-        saved_data = []
+        #current_prices = np.asarray(current_prices)
         saved_data.append(current_prices)
         saved_full_times.append(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
-        saved_daily_times.append(float(datetime.now().strftime("%H"))*60 + float(datetime.now().strftime("%M")) + float(datetime.now().strftime("%S"))/60)
-        np.savetxt('Proxy_Cycling/trading_data.csv', saved_data, fmt = "%f", delimiter= ",")
-        np.savetxt('Proxy_Cycling/trading_full_time_data.csv', saved_full_times, fmt = "%s", delimiter= ",")
-        np.savetxt('Proxy_Cycling/trading_daily_time_data.csv', saved_daily_times, fmt = "%f", delimiter= ",")
+        saved_daily_times.append(float(datetime.now().strftime("%H"))*3600 + float(datetime.now().strftime("%M"))*60 + float(datetime.now().strftime("%S")))
+        np.savetxt('Proxy_Cycling/trading_data.csv', np.asarray(saved_data), fmt = "%f", delimiter= ",")
+        np.savetxt('Proxy_Cycling/trading_full_time_data.csv', np.asarray(saved_full_times), fmt = "%s", delimiter= ",")
+        np.savetxt('Proxy_Cycling/trading_daily_time_data.csv', np.asarray(saved_daily_times), fmt = "%f", delimiter= ",")
 
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 asyncio.run(main())
