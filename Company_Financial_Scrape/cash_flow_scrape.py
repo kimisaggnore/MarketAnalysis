@@ -3,6 +3,7 @@ import requests
 import csv
 import pandas as pd 
 import os
+import sys 
 
 def getpageHTML(url):
     response = requests.get(url)
@@ -24,10 +25,9 @@ def save_html_page(ticker, setting):
 
     url = create_cash_flow_statement_URL(ticker, setting)
     document = getpageHTML(url)
-
-    doucment_soup = BeautifulSoup(document, 'html.parser')
-    with open(f"html_files/company_cash_flow_statements_html/saved_{ticker}_cash_flow_statement{append_2}.txt", "w", encoding = "utf-8") as file:
-        file.write(str(doucment_soup))
+    document_soup = BeautifulSoup(document, 'html.parser')
+    with open(os.path.join(sys.path[0],f"html_files/company_cash_flow_statements_html/saved_{ticker}_cash_flow_statement{append_2}.txt"), "w", encoding = "utf-8") as file:
+        file.write(str(document_soup))
 
 
 def write_cash_flow_statement_to_csv(ticker, setting):
@@ -37,10 +37,10 @@ def write_cash_flow_statement_to_csv(ticker, setting):
     else:
         append = "_annual"
 
-    with open(f'{append}_statements/company_cash_flow_statements{append}/{ticker}_cash_flow_statement{append}.csv', mode = "w", newline = '') as company_fundamental_valuation:
+    with open(os.path.join(sys.path[0],f'{append}_statements/company_cash_flow_statements{append}/{ticker}_cash_flow_statement{append}.csv'), mode = "w", newline = '') as company_fundamental_valuation:
         company_fundamental_valuation_write = csv.writer(company_fundamental_valuation, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
 
-        company_profile = open(f"html_files/company_cash_flow_statements_html/saved_{ticker}_cash_flow_statement{append}.txt", "r")
+        company_profile = open(os.path.join(sys.path[0],f"html_files/company_cash_flow_statements_html/saved_{ticker}_cash_flow_statement{append}.txt"), "r")
 
         document_soup = company_profile.read()
         document_soup = BeautifulSoup(document_soup, 'html.parser')
@@ -60,19 +60,19 @@ def write_cash_flow_statement_to_csv(ticker, setting):
                                                             ])
 
 def rename_all():
-    path = "html_files/company_cash_flow_statements_html"
+    path = os.path.join(sys.path[0],"html_files/company_cash_flow_statements_html")
     dir_list = os.listdir(path)
     for fil in dir_list:
         new_fil = fil.replace("cash_flow_statement", "cash_flow_statement.txt")
-        os.rename(f"html_files/company_cash_flow_statements_html/{fil}", f"html_files/company_cash_flow_statements_html/{new_fil}")
+        os.rename(os.path.join(sys.path[0],f"html_files/company_cash_flow_statements_html/{fil}"), os.path.join(sys.path[0],f"html_files/company_cash_flow_statements_html/{new_fil}"))
 
 def list_all():
-    path = "html_files/company_cash_flow_statements_html"
+    path = os.path.join(sys.path[0],"html_files/company_cash_flow_statements_html")
     dir_list = os.listdir(path)
     print(len(dir_list))
 
 def update_all_cash_flow_statements(setting):
-    all_companies = pd.read_csv("S&P500-Info.csv")
+    all_companies = pd.read_csv(os.path.join(sys.path[0],"S&P500-Info.csv"))
     all_companies = all_companies.loc[:,"Symbol"]
     all_companies = all_companies.tolist()
     all_companies.remove("MMM")
@@ -96,7 +96,7 @@ def update_all_cash_flow_statements(setting):
         index += 1
 
 def update_all_cash_flow_statements_html(setting):
-    all_companies = pd.read_csv("S&P500-Info.csv")
+    all_companies = pd.read_csv(os.path.join(sys.path[0],"S&P500-Info.csv"))
     all_companies = all_companies.loc[:,"Symbol"]
     all_companies = all_companies.tolist()
     all_companies.remove("MMM")
