@@ -86,6 +86,11 @@ def fetch_price(soup):
     price = price.find_all("bg-quote", {"class": "value"})[0].get_text()
     return price
 
+def fetch_volume_scale(soup):
+    price = soup.find_all("div", {"class": "highcharts-container"})[0]
+
+    return price
+
 
 def check_num_successful(list_of_prices):
     list_of_remaining = []

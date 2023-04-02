@@ -65,7 +65,7 @@ async def main():
         np.savetxt('Proxy_Cycling/trading_daily_time_data.csv', np.asarray(saved_daily_times), fmt = "%f", delimiter= ",")
 
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-asyncio.run(main())
+#asyncio.run(main())
 
     
 
