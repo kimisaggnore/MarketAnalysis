@@ -5,7 +5,8 @@ import aiohttp
 import asyncio
 import time
 import urllib.request , socket
-
+import os
+import sys
 class ListNode:
     def __init__(self, data):
         self.data = data
@@ -28,7 +29,7 @@ def convert_list_to_linked_list(proxies):
 
 def retrieve_all_prices():
     prices_list = []
-    all_companies = pd.read_csv("Proxy_Cycling/S&P500-Symbols.csv")
+    all_companies = pd.read_csv(os.path.join(sys.path[0], "S&P500-Symbols.csv"))
     all_companies = all_companies.loc[:,"Symbol"]
     all_companies = all_companies.tolist()
     all_companies.remove('ABMD')
@@ -38,7 +39,7 @@ def retrieve_all_prices():
     all_companies.remove('NLSN')
     all_companies.remove('NLOK')
     all_companies.remove('TWTR')
-    proxies_head = convert_list_to_linked_list(open("Proxy_Cycling/proxies.txt", "r").read().strip().split("\n"))
+    proxies_head = convert_list_to_linked_list(open(os.path.join(sys.path[0], "ProxyCycler/proxies.txt"), "r").read().strip().split("\n"))
     proxy = proxies_head
     # all_companies = all_companies[450:]
     for company in all_companies:
@@ -63,7 +64,7 @@ def retrieve_all_prices():
             proxy = proxies_head
 
 def construct_symbols():
-    all_companies = pd.read_csv("Proxy_Cycling/S&P500-Symbols.csv")
+    all_companies = pd.read_csv(os.path.join(sys.path[0], "S&P500-Symbols.csv"))
     all_companies = all_companies.loc[:,"Symbol"]
     all_companies = all_companies.tolist()
     all_companies.remove('ABMD')
