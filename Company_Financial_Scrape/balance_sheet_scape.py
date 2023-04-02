@@ -4,7 +4,7 @@ import csv
 import pandas as pd 
 import os
 
-def getpageHTML(url):
+def get_page_HTML(url):
     response = requests.get(url)
     return response.text
 
@@ -28,7 +28,7 @@ def save_html_page(ticker, setting):
         append_2 = "_annual"
     
     url = create_balance_sheet_URL(ticker, setting)
-    document = getpageHTML(url)
+    document = get_page_HTML(url)
     document_soup = BeautifulSoup(document, 'html.parser')
     with open(f"html_files/company_balance_sheets_html/saved_{ticker}_balance_sheet{append_2}.txt", "w") as file:
         file.write(str(document_soup))
@@ -37,7 +37,7 @@ def save_html_page(ticker, setting):
 def append_company_balance_sheet(ticker):
 
     url = create_balance_sheet_URL(ticker)
-    document = getpageHTML(url)
+    document = get_page_HTML(url)
     document_soup = BeautifulSoup(document, 'html.parser')
     valuation_table = document_soup.find_all("div", {"class": "element element--table table--fixed financials"})[0].find_all("tr", {"class": "table__row"})
     for row in valuation_table:
