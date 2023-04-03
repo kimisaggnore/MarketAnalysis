@@ -1,23 +1,23 @@
-Item,2017,2018,2019,2020,2021
-Funds from Operations,952.72M,910.39M,1.15B,888.42M,1.03B
-Funds from Operations Growth,-,-4.44%,26.85%,-23.07%,15.49%
-Changes in Working Capital,(24.13M),(173K),37.51M,(13.36M),33.32M
+Item,2018,2019,2020,2021,2022
+Funds from Operations,910.39M,1.15B,888.42M,1.03B,1.15B
+Funds from Operations Growth,-,26.85%,-23.07%,15.49%,12.44%
+Changes in Working Capital,(173K),37.51M,(13.36M),33.32M,(2.46M)
 Receivables,-,-,-,-,-
 Inventories,-,-,-,-,-
-Accounts Payable,(15.1M),(145K),29.55M,(10.38M),22.3M
-Other Assets/Liabilities,(9.03M),(28K),7.96M,(2.98M),11.02M
-Net Operating Cash Flow,928.59M,910.22M,1.19B,875.05M,1.06B
-Net Operating Cash Flow Growth,-,-1.98%,31.00%,-26.61%,21.06%
-Item,2017,2018,2019,2020,2021
-Capital Expenditures,(70.99M),(81.68M),(101.69M),(90.09M),(121.2M)
-Capital Expenditures Growth,-,-15.07%,-24.49%,11.41%,-34.53%
-Capital Expenditures (Fixed Assets),(70.99M),(81.68M),(101.69M),(90.09M),(121.2M)
+Accounts Payable,(145K),29.55M,(10.38M),22.3M,(17.27M)
+Other Assets/Liabilities,(28K),7.96M,(2.98M),11.02M,14.81M
+Net Operating Cash Flow,910.22M,1.19B,875.05M,1.06B,1.15B
+Net Operating Cash Flow Growth,-,31.00%,-26.61%,21.06%,8.67%
+Item,2018,2019,2020,2021,2022
+Capital Expenditures,(81.68M),(101.69M),(90.09M),(121.2M),(163.19M)
+Capital Expenditures Growth,-,-24.49%,11.41%,-34.53%,-34.65%
+Capital Expenditures (Fixed Assets),(81.68M),(101.69M),(90.09M),(121.2M),(163.19M)
 Capital Expenditures (Other Assets),-,-,-,-,-
-Net Assets from Acquisitions,(34.12M),(1.48M),(36.64M),(3.99M),(12.92M)
-Sale of Fixed Assets & Businesses,-,-,-,-,-
-Purchase/Sale of Investments,(659.05M),(62.86M),(703.03M),(399.58M),(24.2B)
-Purchase of Investments,(881.57M),(471.47M),(1.04B),(950.92M),(24.62B)
-Sale/Maturity of Investments,222.52M,408.61M,339.47M,551.34M,418.44M
-Other Uses,-,(414K),-,-,(9.49M)
-Other Sources,90.36M,1.41M,3.74M,819K,879K
-Net Investing Cash Flow,(673.8M),(145.03M),(837.62M),(492.83M),(24.35B)
+Net Assets from Acquisitions,(1.48M),(36.64M),(3.99M),(12.92M),(11.93M)
+Sale of Fixed Assets & Businesses,-,-,-,-,125K
+Purchase/Sale of Investments,(62.86M),(703.03M),(399.58M),(24.2B),145.52M
+Purchase of Investments,(471.47M),(1.04B),(950.92M),(24.62B),(495.69M)
+Sale/Maturity of Investments,408.61M,339.47M,551.34M,418.44M,641.21M
+Other Uses,(414K),-,-,(9.49M),(16.32M)
+Other Sources,1.41M,3.74M,819K,879K,4.33M
+Net Investing Cash Flow,(145.03M),(837.62M),(492.83M),(24.35B),(41.47M)

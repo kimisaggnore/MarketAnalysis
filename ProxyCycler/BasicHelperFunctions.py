@@ -39,7 +39,7 @@ def retrieve_all_prices():
     all_companies.remove('NLSN')
     all_companies.remove('NLOK')
     all_companies.remove('TWTR')
-    proxies_head = convert_list_to_linked_list(open(os.path.join(sys.path[0], "ProxyCycler/proxies.txt"), "r").read().strip().split("\n"))
+    proxies_head = convert_list_to_linked_list(open(os.path.join(sys.path[0], "proxies.txt"), "r").read().strip().split("\n"))
     proxy = proxies_head
     # all_companies = all_companies[450:]
     for company in all_companies:

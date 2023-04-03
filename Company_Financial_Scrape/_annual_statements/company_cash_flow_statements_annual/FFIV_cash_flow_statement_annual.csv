@@ -1,35 +1,35 @@
-Item,2017,2018,2019,2020,2021
-Net Income before Extraordinaries,420.76M,453.69M,427.73M,307.44M,331.24M
-Net Income Growth,-,7.83%,-5.72%,-28.12%,7.74%
-"Depreciation, Depletion & Amortization",61.15M,59.49M,68.51M,135M,153.8M
-Depreciation and Depletion,-,-,56.71M,100.4M,105.1M
-Amortization of Intangible Assets,-,-,11.8M,34.6M,48.7M
-Deferred Taxes & Investment Tax Credit,(4.63M),20.81M,7.44M,7.29M,(76.93M)
-Deferred Taxes,(4.63M),20.81M,7.44M,7.29M,(76.93M)
+Item,2018,2019,2020,2021,2022
+Net Income before Extraordinaries,453.69M,427.73M,307.44M,331.24M,322.16M
+Net Income Growth,-,-5.72%,-28.12%,7.74%,-2.74%
+"Depreciation, Depletion & Amortization",59.49M,68.51M,135M,153.8M,154.34M
+Depreciation and Depletion,-,56.71M,100.4M,105.1M,117.94M
+Amortization of Intangible Assets,-,11.8M,34.6M,48.7M,36.4M
+Deferred Taxes & Investment Tax Credit,20.81M,7.44M,7.29M,(76.93M),(40.24M)
+Deferred Taxes,20.81M,7.44M,7.29M,(76.93M),(40.24M)
 Investment Tax Credit,-,-,-,-,-
-Other Funds,175.25M,159.05M,179.06M,213.74M,284.71M
-Funds from Operations,652.54M,693.04M,682.74M,663.47M,692.82M
+Other Funds,159.05M,179.06M,213.74M,284.71M,256.66M
+Funds from Operations,693.04M,682.74M,663.47M,692.82M,692.92M
 Extraordinaries,-,-,-,-,-
-Changes in Working Capital,87.75M,68.03M,65.1M,47.68M,3.94M
-Receivables,(24.12M),(4.89M),(18.31M),46.5M,(46.29M)
-Accounts Payable,30.52M,6.58M,74.71M,34.74M,22.93M
-Other Assets/Liabilities,77.12M,67.07M,12.53M,(40.07M),21.45M
-Net Operating Cash Flow,740.28M,761.07M,747.84M,711.15M,696.76M
-Net Operating Cash Flow Growth,-,2.81%,-1.74%,-4.91%,-2.02%
-Net Operating Cash Flow / Sales,35.42%,35.21%,33.35%,30.25%,26.76%
-Item,2017,2018,2019,2020,2021
-Capital Expenditures,(42.68M),(53.47M),(103.54M),(59.94M),(30.65M)
-Capital Expenditures Growth,-,-25.27%,-93.66%,42.11%,48.86%
-Capital Expenditures / Sales,-2.04%,-2.47%,-4.62%,-2.55%,-1.18%
-Capital Expenditures (Fixed Assets),(38.68M),(53.47M),(103.54M),(59.94M),(30.65M)
-Capital Expenditures (Other Assets),(4M),-,-,-,-
-Net Assets from Acquisitions,-,-,(611.55M),(955.57M),(411.32M)
-Sale of Fixed Assets & Businesses,-,1M,-,-,-
-Purchase/Sale of Investments,10.4M,(403.52M),300.46M,268.51M,(3.37M)
-Purchase of Investments,(446.91M),(855.42M),(602.99M),(584.24M),(472.17M)
-Sale/Maturity of Investments,457.31M,451.9M,903.45M,852.75M,468.8M
+Changes in Working Capital,68.03M,65.1M,47.68M,3.94M,(198.24M)
+Receivables,(4.89M),(18.31M),46.5M,(46.29M),(130.61M)
+Accounts Payable,6.58M,74.71M,34.74M,22.93M,19.16M
+Other Assets/Liabilities,67.07M,12.53M,(40.07M),21.45M,(40.49M)
+Net Operating Cash Flow,761.07M,747.84M,711.15M,696.76M,494.68M
+Net Operating Cash Flow Growth,-,-1.74%,-4.91%,-2.02%,-29.00%
+Net Operating Cash Flow / Sales,35.21%,33.35%,30.25%,26.76%,18.35%
+Item,2018,2019,2020,2021,2022
+Capital Expenditures,(53.47M),(103.54M),(59.94M),(30.65M),(33.62M)
+Capital Expenditures Growth,-,-93.66%,42.11%,48.86%,-9.70%
+Capital Expenditures / Sales,-2.47%,-4.62%,-2.55%,-1.18%,-1.25%
+Capital Expenditures (Fixed Assets),(53.47M),(103.54M),(59.94M),(30.65M),(33.62M)
+Capital Expenditures (Other Assets),-,-,-,-,-
+Net Assets from Acquisitions,-,(611.55M),(955.57M),(411.32M),(67.91M)
+Sale of Fixed Assets & Businesses,1M,-,-,-,-
+Purchase/Sale of Investments,(403.52M),300.46M,268.51M,(3.37M),319.65M
+Purchase of Investments,(855.42M),(602.99M),(584.24M),(472.17M),(61.28M)
+Sale/Maturity of Investments,451.9M,903.45M,852.75M,468.8M,380.94M
 Other Uses,-,-,-,-,-
-Other Sources,7.02M,-,-,-,-
-Net Investing Cash Flow,(32.29M),(455.99M),(414.63M),(747M),(445.34M)
-Net Investing Cash Flow Growth,-,"-1,312.38%",9.07%,-80.16%,40.38%
-Net Investing Cash Flow / Sales,-1.54%,-21.10%,-18.49%,-31.78%,-17.11%
+Other Sources,-,-,-,-,-
+Net Investing Cash Flow,(455.99M),(414.63M),(747M),(445.34M),218.12M
+Net Investing Cash Flow Growth,-,9.07%,-80.16%,40.38%,148.98%
+Net Investing Cash Flow / Sales,-21.10%,-18.49%,-31.78%,-17.11%,8.09%

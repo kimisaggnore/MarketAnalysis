@@ -1,23 +1,23 @@
-Item,2017,2018,2019,2020,2021
-Funds from Operations,428.5M,621.5M,580.7M,615.4M,710.4M
-Funds from Operations Growth,-,45.04%,-6.56%,5.98%,15.44%
-Changes in Working Capital,(54.1M),(86.8M),52.1M,843.4M,(113.6M)
-Receivables,21.4M,(123.5M),63.8M,(84.6M),22.3M
+Item,2018,2019,2020,2021,2022
+Funds from Operations,621.5M,580.7M,615.4M,710.4M,735.2M
+Funds from Operations Growth,-,-6.56%,5.98%,15.44%,3.49%
+Changes in Working Capital,(86.8M),52.1M,843.4M,(113.6M),133.4M
+Receivables,(123.5M),63.8M,(84.6M),22.3M,(55.2M)
 Inventories,-,-,-,-,-
-Accounts Payable,(32.1M),22.3M,(7.8M),113.3M,(67.1M)
-Other Assets/Liabilities,800K,(22.1M),(25M),815.8M,(72.7M)
-Net Operating Cash Flow,374.4M,534.7M,632.8M,1.46B,596.8M
-Net Operating Cash Flow Growth,-,42.82%,18.35%,130.53%,-59.09%
-Item,2017,2018,2019,2020,2021
-Capital Expenditures,(37.5M),(36.3M),(35.1M),(47.4M),(51M)
-Capital Expenditures Growth,-,3.20%,3.31%,-35.04%,-7.59%
-Capital Expenditures (Fixed Assets),(37.5M),(36.3M),(35.1M),(47.4M),(51M)
+Accounts Payable,22.3M,(7.8M),113.3M,(67.1M),145.1M
+Other Assets/Liabilities,(22.1M),(25M),815.8M,(72.7M),47.3M
+Net Operating Cash Flow,534.7M,632.8M,1.46B,596.8M,868.6M
+Net Operating Cash Flow Growth,-,18.35%,130.53%,-59.09%,45.54%
+Item,2018,2019,2020,2021,2022
+Capital Expenditures,(36.3M),(35.1M),(47.4M),(51M),(59.8M)
+Capital Expenditures Growth,-,3.31%,-35.04%,-7.59%,-17.25%
+Capital Expenditures (Fixed Assets),(36.3M),(35.1M),(47.4M),(51M),(59.8M)
 Capital Expenditures (Other Assets),-,-,-,-,-
-Net Assets from Acquisitions,(1.41B),-,-,(351.5M),(151.5M)
+Net Assets from Acquisitions,-,-,(351.5M),(151.5M),(708.3M)
 Sale of Fixed Assets & Businesses,-,-,-,-,-
-Purchase/Sale of Investments,15.1M,10.7M,(10.8M),(32.1M),(150.8M)
-Purchase of Investments,(140M),(168M),(108.8M),(234.6M),(311M)
-Sale/Maturity of Investments,155.1M,178.7M,98M,202.5M,160.2M
+Purchase/Sale of Investments,10.7M,(10.8M),(32.1M),(150.8M),(67M)
+Purchase of Investments,(168M),(108.8M),(234.6M),(311M),(119.3M)
+Sale/Maturity of Investments,178.7M,98M,202.5M,160.2M,52.3M
 Other Uses,-,-,-,-,-
-Other Sources,-,-,30M,500K,600K
-Net Investing Cash Flow,(1.44B),(25.6M),(15.9M),(430.5M),(352.7M)
+Other Sources,-,30M,500K,600K,-
+Net Investing Cash Flow,(25.6M),(15.9M),(430.5M),(352.7M),(835.1M)

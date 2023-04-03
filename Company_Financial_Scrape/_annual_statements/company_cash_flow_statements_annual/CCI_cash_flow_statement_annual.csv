@@ -1,23 +1,23 @@
-Item,2017,2018,2019,2020,2021
-Funds from Operations,1.82B,2.29B,2.57B,2.99B,3.14B
-Funds from Operations Growth,-,25.61%,12.31%,16.10%,5.03%
-Changes in Working Capital,221.8M,105M,127M,70M,(346M)
-Receivables,60.86M,(105M),(96M),166M,(113M)
+Item,2018,2019,2020,2021,2022
+Funds from Operations,2.29B,2.57B,2.99B,3.14B,3.63B
+Funds from Operations Growth,-,12.31%,16.10%,5.03%,15.63%
+Changes in Working Capital,105M,127M,70M,(346M),(747M)
+Receivables,(105M),(96M),166M,(113M),(49M)
 Inventories,-,-,-,-,-
-Accounts Payable,(34.07M),37M,19M,(77M),15M
-Other Assets/Liabilities,160.24M,157M,183M,(50M),(231M)
-Net Operating Cash Flow,2.04B,2.39B,2.7B,3.06B,2.79B
-Net Operating Cash Flow Growth,-,17.12%,12.69%,13.23%,-8.71%
-Item,2017,2018,2019,2020,2021
-Capital Expenditures,(1.23B),(1.74B),(2.06B),(1.62B),(1.23B)
-Capital Expenditures Growth,-,-41.60%,-18.29%,21.05%,24.32%
-Capital Expenditures (Fixed Assets),(1.23B),(1.74B),(2.06B),(1.62B),(1.23B)
+Accounts Payable,37M,19M,(77M),15M,(5M)
+Other Assets/Liabilities,157M,183M,(50M),(231M),(693M)
+Net Operating Cash Flow,2.39B,2.7B,3.06B,2.79B,2.88B
+Net Operating Cash Flow Growth,-,12.69%,13.23%,-8.71%,3.19%
+Item,2018,2019,2020,2021,2022
+Capital Expenditures,(1.74B),(2.06B),(1.62B),(1.23B),(1.31B)
+Capital Expenditures Growth,-,-18.29%,21.05%,24.32%,-6.59%
+Capital Expenditures (Fixed Assets),(1.74B),(2.06B),(1.62B),(1.23B),(1.31B)
 Capital Expenditures (Other Assets),-,-,-,-,-
-Net Assets from Acquisitions,(9.26B),(42M),(17M),(107M),(111M)
+Net Assets from Acquisitions,(42M),(17M),(107M),(111M),(35M)
 Sale of Fixed Assets & Businesses,-,-,-,-,-
-Purchase/Sale of Investments,3.81M,-,-,-,-
+Purchase/Sale of Investments,-,-,-,-,-
 Purchase of Investments,-,-,-,-,-
-Sale/Maturity of Investments,3.81M,-,-,-,-
-Other Uses,(5.82M),(12M),(7M),(10M),-
-Other Sources,-,-,-,-,8M
-Net Investing Cash Flow,(10.49B),(1.79B),(2.08B),(1.74B),(1.33B)
+Sale/Maturity of Investments,-,-,-,-,-
+Other Uses,(12M),(7M),(10M),-,(7M)
+Other Sources,-,-,-,8M,-
+Net Investing Cash Flow,(1.79B),(2.08B),(1.74B),(1.33B),(1.35B)

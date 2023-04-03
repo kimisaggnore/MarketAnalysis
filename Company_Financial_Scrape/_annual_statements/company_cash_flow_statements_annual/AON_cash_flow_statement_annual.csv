@@ -1,23 +1,23 @@
-Item,2017,2018,2019,2020,2021
-Funds from Operations,1.64B,1.99B,2.41B,2.73B,1.95B
-Funds from Operations Growth,-,21.00%,21.03%,13.34%,-28.42%
-Changes in Working Capital,(909M),(302M),675M,56M,230M
-Receivables,(83M),(806M),(780M),108M,(119M)
+Item,2018,2019,2020,2021,2022
+Funds from Operations,1.99B,2.41B,2.73B,1.95B,3.17B
+Funds from Operations Growth,-,21.03%,13.34%,-28.42%,62.45%
+Changes in Working Capital,(302M),675M,56M,230M,48M
+Receivables,(806M),(780M),108M,(119M),(96M)
 Inventories,-,-,-,-,-
-Accounts Payable,96M,25M,(28M),186M,264M
-Other Assets/Liabilities,(8M),445M,1.5B,(221M),(115M)
-Net Operating Cash Flow,734M,1.69B,3.08B,2.78B,2.18B
-Net Operating Cash Flow Growth,-,129.70%,82.74%,-9.67%,-21.60%
-Item,2017,2018,2019,2020,2021
-Capital Expenditures,(183M),(240M),(225M),(141M),(137M)
-Capital Expenditures Growth,-,-31.15%,6.25%,37.33%,2.84%
-Capital Expenditures (Fixed Assets),(183M),(240M),(225M),(141M),(137M)
+Accounts Payable,25M,(28M),186M,264M,(22M)
+Other Assets/Liabilities,445M,1.5B,(221M),(115M),(50M)
+Net Operating Cash Flow,1.69B,3.08B,2.78B,2.18B,3.22B
+Net Operating Cash Flow Growth,-,82.74%,-9.67%,-21.60%,47.53%
+Item,2018,2019,2020,2021,2022
+Capital Expenditures,(240M),(225M),(141M),(137M),(196M)
+Capital Expenditures Growth,-,6.25%,37.33%,2.84%,-43.07%
+Capital Expenditures (Fixed Assets),(240M),(225M),(141M),(137M),(196M)
 Capital Expenditures (Other Assets),-,-,-,-,-
-Net Assets from Acquisitions,(1.03B),(68M),(39M),(368M),(14M)
-Sale of Fixed Assets & Businesses,4.25B,-,52M,30M,218M
-Purchase/Sale of Investments,(228M),339M,(17M),(200M),(18M)
-Purchase of Investments,(296M),(80M),(113M),(264M),(91M)
-Sale/Maturity of Investments,68M,419M,96M,64M,73M
-Other Uses,(19M),-,-,-,-
+Net Assets from Acquisitions,(68M),(39M),(368M),(14M),(162M)
+Sale of Fixed Assets & Businesses,-,52M,30M,218M,81M
+Purchase/Sale of Investments,339M,(17M),(200M),(18M),(172M)
+Purchase of Investments,(80M),(113M),(264M),(91M),(282M)
+Sale/Maturity of Investments,419M,96M,64M,73M,110M
+Other Uses,-,-,-,-,-
 Other Sources,-,-,-,-,-
-Net Investing Cash Flow,2.79B,31M,(229M),(679M),49M
+Net Investing Cash Flow,31M,(229M),(679M),49M,(449M)

@@ -2,7 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 import csv
 import pandas as pd 
-
+import os
+import sys
 
 def get_page_HTML(url):
     response = requests.get(url)
@@ -46,11 +47,22 @@ def append_company_valuation(ticker):
 # df.to_csv('S&P500-Info.csv')
 # df.to_csv("S&P500-Symbols.csv", columns=['Symbol'])
 
-all_companies = pd.read_csv("S&P500-Info.csv")
+all_companies = pd.read_csv(os.path.join(sys.path[0],"S&P500-Info.csv"))
 all_companies = all_companies.loc[:,"Symbol"]
 all_companies = all_companies.tolist()
+all_companies.remove("MMM")
+all_companies.remove('AMCR')
+all_companies.remove('EVRG')
+all_companies.remove('MTCH')
+all_companies.remove('ABMD')
+all_companies.remove('CTXS')
+all_companies.remove('FBHS')
+all_companies.remove('LIN')
+all_companies.remove('NLSN')
+all_companies.remove('SIVB')
+all_companies.remove('TWTR')
 
-with open('company_fundamental_valuation_2.csv', mode = "w", newline = '') as company_fundamental_valuation:
+with open(os.path.join(sys.path[0],'company_fundamental_valuation_2.csv'), mode = "w", newline = '') as company_fundamental_valuation:
     company_fundamental_valuation_write = csv.writer(company_fundamental_valuation, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
     company_fundamental_valuation_write.writerow(['Company Tickers','P/E Current', 'P/E Ratio (w/ extraordinary items)', 'P/E Ratio (w/o extraordinary items)',
     'Price to Sales Ratio', 'Price to Book Ratio', 'Price to Cash Flow Ratio', 'Enterprise Value to EBITDA', 'Enterprise Value to Sales', 

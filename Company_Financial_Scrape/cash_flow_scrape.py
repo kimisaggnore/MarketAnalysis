@@ -86,11 +86,13 @@ def update_all_cash_flow_statements(setting):
     all_companies.remove('NLSN')
     all_companies.remove('SIVB')
     all_companies.remove('TWTR')
+    all_companies.remove('DRE')
+    all_companies.remove('NLOK')
     if setting == "quarter":
         all_companies.remove("BBWI")
         all_companies.remove("CEG")
     index = 0
-    for company in all_companies:
+    for company in all_companies[150:]:
         print(f"{index}:{company}")
         write_cash_flow_statement_to_csv(company, setting)
         index += 1
@@ -111,5 +113,5 @@ def update_all_cash_flow_statements_html(setting):
 
 #rename_all()
 #update_all_cash_flow_statements_html("")
-#update_all_cash_flow_statements("")
+update_all_cash_flow_statements("")
 

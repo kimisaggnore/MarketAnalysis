@@ -1,23 +1,23 @@
-Item,2017,2018,2019,2020,2021
-Funds from Operations,7.89B,12.3B,12.23B,9.4B,8.19B
-Funds from Operations Growth,-,55.88%,-0.61%,-23.13%,-12.90%
-Changes in Working Capital,5.65B,(3.37B),1.4B,(3.81B),6.46B
-Receivables,475M,248M,-,-,-
+Item,2018,2019,2020,2021,2022
+Funds from Operations,12.3B,12.23B,9.4B,8.19B,10.87B
+Funds from Operations Growth,-,-0.61%,-23.13%,-12.90%,32.79%
+Changes in Working Capital,(3.37B),1.4B,(3.81B),6.46B,10.21B
+Receivables,248M,-,-,-,-
 Inventories,-,-,-,-,-
-Accounts Payable,5.51B,(4.12B),1.77B,(2.03B),5.39B
-Other Assets/Liabilities,(334M),499M,(368M),(1.79B),1.07B
-Net Operating Cash Flow,13.54B,8.93B,13.63B,5.59B,14.65B
-Net Operating Cash Flow Growth,-,-34.05%,52.65%,-58.99%,161.94%
-Item,2017,2018,2019,2020,2021
-Capital Expenditures,(1.06B),(1.31B),(1.69B),(1.48B),(1.64B)
-Capital Expenditures Growth,-,-23.33%,-28.76%,12.38%,-10.75%
-Capital Expenditures (Fixed Assets),(1.06B),(1.31B),(1.69B),(1.48B),(1.64B)
+Accounts Payable,(4.12B),1.77B,(2.03B),5.39B,8.82B
+Other Assets/Liabilities,499M,(368M),(1.79B),1.07B,1.39B
+Net Operating Cash Flow,8.93B,13.63B,5.59B,14.65B,21.08B
+Net Operating Cash Flow Growth,-,52.65%,-58.99%,161.94%,43.93%
+Item,2018,2019,2020,2021,2022
+Capital Expenditures,(1.31B),(1.69B),(1.48B),(1.64B),(1.86B)
+Capital Expenditures Growth,-,-28.76%,12.38%,-10.75%,-13.31%
+Capital Expenditures (Fixed Assets),(1.31B),(1.69B),(1.48B),(1.64B),(1.86B)
 Capital Expenditures (Other Assets),-,-,-,-,-
-Net Assets from Acquisitions,(211M),(520M),(352M),(597M),1M
-Sale of Fixed Assets & Businesses,1M,1M,43M,1M,88M
-Purchase/Sale of Investments,(116M),(1.93B),(3.82B),(13.33B),18.58B
-Purchase of Investments,(2.61B),(5.43B),(11.17B),(20.56B),(1.52B)
-Sale/Maturity of Investments,2.5B,3.5B,7.35B,7.23B,20.09B
+Net Assets from Acquisitions,(520M),(352M),(597M),-,(15M)
+Sale of Fixed Assets & Businesses,1M,43M,1M,89M,1M
+Purchase/Sale of Investments,(1.93B),(3.82B),(13.33B),18.58B,(2.26B)
+Purchase of Investments,(5.43B),(11.17B),(20.56B),(1.52B),(4.18B)
+Sale/Maturity of Investments,3.5B,7.35B,7.23B,20.09B,1.92B
 Other Uses,-,-,-,-,-
-Other Sources,-,-,152M,135M,-
-Net Investing Cash Flow,(18.24B),(19.62B),(16.71B),11.63B,(10.53B)
+Other Sources,-,152M,135M,-,-
+Net Investing Cash Flow,(19.62B),(16.71B),11.63B,(10.53B),(33.69B)
