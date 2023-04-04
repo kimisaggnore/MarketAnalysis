@@ -6,6 +6,8 @@ import statistics
 import statsmodels.api as sm
 import time
 import math
+import os
+import sys
 
 def update_csv():
     intel_df = pd.read_csv(os.path.join(sys.path[0], "Intel_Data.csv"))
@@ -98,13 +100,11 @@ def max_volatility_estimator(time_period_start, time_period_end, length):
         else:
             at_max = False
 
-
         #print(cur_sum_of_terms)
         #cur_percent_changes_list = percent_changes_list[slice(cur_start, cur_end, 1)]
         # print(cur_start)
         # print(cur_end)
         # print(cur_percent_changes_list)
-
 
     end_time = time.time() - start_time
     print(f"end time: {end_time}")
