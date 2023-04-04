@@ -28,7 +28,7 @@ async def main():
     saved_full_times = []
     saved_daily_times = []
     saved_data = []
-    for _ in range(0,10):
+    for _ in range(0,2):
         index = 0
         for proxies in working_proxies:
             if proxies != 0:
@@ -38,23 +38,26 @@ async def main():
         proxies_head = convert_list_to_linked_list(new_proxy_list)
         start_time = time.time()
         indexes = [1]*100
-        all_prices = await retrieve_SP_500_prices(indexes, proxies_head, all_companies)
+        all_prices, all_volumes = await retrieve_SP_500_data(indexes, proxies_head, all_companies)
         all_prices = [float(i.replace(',','')) for i in all_prices]
         current_prices = all_prices.copy()
+        current_volumes = all_volumes.copy()
         percent_success, remaining_list = check_num_successful(all_prices)
         print("--- threshold percent: 0.95 ---")
         print("--- remaining prices retrieval: {:.2f} seconds elapsed, {:.2f} percent complete ---".format(time.time() - start_time , percent_success*100))
         trials = 0
         while not percent_success >= .95 and trials <= 5:
-            all_prices = await retrieve_SP_500_prices(remaining_list, proxies_head, all_companies)
+            all_prices, all_volumes = await retrieve_SP_500_data(remaining_list, proxies_head, all_companies)
             all_prices = [float(i.replace(',','')) for i in all_prices]
-            current_prices = merge_prices_lists(current_prices, all_prices, remaining_list)
+            current_prices = merge_lists(current_prices, all_prices, remaining_list)
+            current_volumes = merge_lists(current_volumes, all_volumes, remaining_list)
             percent_success, remaining_list = check_num_successful(current_prices)
             trials += 1
             print("--- remaining prices retrieval: {:.2f} seconds elapsed, {:.2f} percent complete ---".format(time.time() - start_time , percent_success*100))
 
         print("\n")
         print(current_prices)
+        print(current_volumes)
 
         #current_prices = np.asarray(current_prices)
         saved_data.append(current_prices)
@@ -66,11 +69,5 @@ async def main():
 
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 asyncio.run(main())
-
-    
-
-
-
-
 
 
