@@ -136,7 +136,8 @@ def max_volatility_true(time_period_start, time_period_end, length):
     print(f"maxstart: {max_start}, maxend: {max_end}")
     return max_stddev
 
-#print(max_volatility_true(10000, 10600, 20))
-#plot_percent_changes()
-#save_percent_changes()
+print(max_volatility_estimator(10000, 10600, 20))
+print(max_volatility_true(10000, 10600, 20))
+plot_percent_changes()
+save_percent_changes()
 plot_prices()
