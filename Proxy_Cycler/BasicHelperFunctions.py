@@ -45,6 +45,7 @@ def retrieve_all_prices():
     for company in all_companies:
         if proxy != None:
             url = f"https://www.marketwatch.com/investing/stock/{company}?mod=search_symbol"
+            #url = f"https://www.marketwatch.com/investing/stock/{company}/options?mod=mw_quote_tab"
             res = get_page(url, proxy)
             num_cycles = 1
             while not res[0]:
@@ -95,6 +96,7 @@ def fetch_volume(soup):
     volume = volume.find_all("div", {"class": "range__header"})[0]
     volume = volume.find_all("span", {"class": "primary"})[0].get_text()
     volume = volume.replace("Volume: ","")
+    #print(volume)
     return volume
 
 def fetch_volume_scale(soup):
@@ -108,14 +110,14 @@ def check_num_successful(list_of_prices):
     length = len(list_of_prices)
     total = 0
     for price in list_of_prices:
-        if price != 0:
+        if price != -1:
             total += 1
             list_of_remaining.append(0)
         else:
             list_of_remaining.append(1)
     return float(total)/float(length), list_of_remaining
 
-def merge_lists(prev_data, cur_data, remaining_list):
+def merge_lists(prev_data, cur_data):
     indexer_one = 0
     indexer_two = 0
     len_list1 = len(prev_data)
@@ -139,11 +141,9 @@ async def retrieve_data(session, url, proxy, return_prices, return_volumes, coun
             if res.ok:
                 response = await res.text()
                 document_soup = BeautifulSoup(str(response), 'html.parser')
-                price = fetch_price(document_soup)
-                volume = fetch_volume(document_soup)
-                return_prices[counter] = price
-                return_volumes[counter] = volume
-                return price
+                return_prices[counter] = fetch_price(document_soup)
+                return_volumes[counter] = fetch_volume(document_soup)
+                return price, volume
             else:
                 return 0
     except:
@@ -151,8 +151,8 @@ async def retrieve_data(session, url, proxy, return_prices, return_volumes, coun
 
 async def retrieve_SP_500_data(companies, proxies_head, all_companies):
     proxy = proxies_head
-    return_prices = ['0']*len(companies)
-    return_volumes = ['0']*len(companies)
+    return_prices = ['-1']*len(companies)
+    return_volumes = ['-1']*len(companies)
     async with aiohttp.ClientSession() as session:
         tasks = []
         counter = 0
